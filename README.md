@@ -2,6 +2,18 @@
 
 ***The revolution of avatars***
 
+## Installation
+
+Check the [registry](https://www.npmjs.com/package/korra)
+
+
+
+```bash
+npm install korra # using npm
+# or
+yarn add korra # using yarn
+```
+
 ## Development
 
 Patch a new version
