@@ -23,5 +23,5 @@ npm publish
 
 ### package.json
 * Add `"files": ["dist/**/*"]` (or wherever your compiled code is) to include files for package
-* Add **prepare**, **prepublishOnly**, **preversion**, **version** and **postversion** for automated versioning
+* Add **prepare**, **prepublishOnly**, **preversion**, **version** and **postversion** scripts for automated versioning
 * Add personal info
