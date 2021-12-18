@@ -1,3 +1,3 @@
-# Appa
+# Korra
 
-***Avatar themed Avatar generator***
+***The revolution of avatars***
