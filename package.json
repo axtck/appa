@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/axtck/korra/issues"
   },
-  "homepage": "https://github.com/axtck/korra#readme"
+  "homepage": "https://github.com/axtck/korra#readme",
+  "devDependencies": {
+    "typescript": "^4.5.4"
+  }
 }
