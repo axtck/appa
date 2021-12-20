@@ -1,4 +1,5 @@
-export interface IParameters {
+export interface IUsernameParameters {
+    username: string;
     usernameLength: number;
     letters: Array<string>;
     numbers: Array<string>;
@@ -8,6 +9,7 @@ export interface IParameters {
     vowels: Array<string>;
     consonants: Array<string>;
     firstCharacter: string;
+    created: Date;
 }
 
 export enum Casing {

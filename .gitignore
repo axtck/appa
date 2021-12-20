@@ -1,2 +1,8 @@
 node_modules/
 dist/
+
+# will ignore everything in examples except README
+examples/*
+!examples/generated
+examples/generated/*
+!examples/generated/README.md

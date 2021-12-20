@@ -1,5 +1,7 @@
 import { Constants } from "./Constants";
-import { Casing, IParameters } from "./types";
+import { Casing, IUsernameParameters } from "./types";
+import path from "path";
+import fs from "fs/promises";
 
 const filterChars = (characters: Array<string>, regex: RegExp, compareLow: boolean = false): Array<string> => {
     return compareLow ? characters.filter(c => regex.test(c.toLowerCase())) : characters.filter(c => regex.test(c));
@@ -17,14 +19,15 @@ const validateUsername = (username: string): boolean => {
     return notEmpty && noSpaces && startsWithLetter;
 };
 
-export const getParameters = (username: string): IParameters => {
+export const getParameters = (username: string): IUsernameParameters => {
     if (!validateUsername(username)) throw new Error("invalid username was passed");
 
     const characters: Array<string> = username.split("").filter(x => x);
 
     const letters = filterChars(characters, Constants.regexPatterns.letter);
 
-    const parameters: IParameters = {
+    const parameters: IUsernameParameters = {
+        username: username,
         usernameLength: characters.length,
         letters: letters,
         numbers: filterChars(characters, Constants.regexPatterns.number),
@@ -33,8 +36,22 @@ export const getParameters = (username: string): IParameters => {
         lowerCaseCharacters: filterCasing(letters, Casing.Low),
         vowels: filterChars(characters, Constants.regexPatterns.vowel, true),
         consonants: filterChars(characters, Constants.regexPatterns.consonant, true),
-        firstCharacter: characters[0]
+        firstCharacter: characters[0],
+        created: new Date()
     };
 
     return parameters;
+};
+
+export const genSvg = async (parameters: IUsernameParameters): Promise<void> => {
+    const rootDir: string = path.resolve("./");
+    const fileLoc: string = path.join(rootDir, "examples", "generated", `${parameters.username}.svg`);
+
+    try {
+        const data = `<svg>${parameters.username}</svg>`;
+        await fs.writeFile(fileLoc, data);
+    } catch (e) {
+        console.error("generating svg failed", e);
+        return;
+    }
 };

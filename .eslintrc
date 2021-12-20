@@ -19,7 +19,6 @@
             "warn",
             "double"
         ],
-        "no-console": "warn",
         "@typescript-eslint/no-floating-promises": [
             "error"
         ],
