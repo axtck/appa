@@ -9,3 +9,8 @@ export interface IParameters {
     consonants: Array<string>;
     firstCharacter: string;
 }
+
+export enum Casing {
+    High = "H",
+    Low = "L"
+} 
