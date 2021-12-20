@@ -2,17 +2,44 @@
 
 ***The revolution of avatars***
 
+___
+
 ## Installation
 
 Check the [registry](https://www.npmjs.com/package/korra)
-
-
 
 ```bash
 npm install korra # using npm
 # or
 yarn add korra # using yarn
 ```
+
+___
+
+## Idea
+
+A package that generates a unique avatar image based on parameters extracted from a users username.
+
+### Parameters
+
+Example parameters:
+* length
+* letters
+* numbers
+* other characters
+* uppercase letters
+* lowercase letters
+* vowels
+* consonants
+* first character
+
+These will be used to calculate a visual representation.
+
+### Visual representation
+
+Ideas
+* svg
+___
 
 ## Development
 
