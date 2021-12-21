@@ -191,22 +191,21 @@ describe("index", () => {
     });
 
     describe("generate Korra", () => {
-        const baseParameters: IUsernameParameters = {
-            username: "axtck",
-            usernameLength: 5,
-            letters: ["a", "x", "t", "c", "k"],
-            numbers: [],
-            otherCharacters: [],
-            upperCaseCharacters: [],
-            lowerCaseCharacters: ["a", "x", "t", "c", "k"],
-            vowels: ["a"],
-            consonants: ["x", "t", "c", "k"],
-            firstCharacter: "a",
-            created: new Date()
-        };
+        it("should throw (empty)", () => {
+            expect(() => getParameters("")).toThrow();
+        });
 
+        it("should throw (space)", () => {
+            expect(() => getParameters("ax tck")).toThrow();
+        });
+
+        it("should throw (doesn't start with letter)", () => {
+            expect(() => getParameters("_axtck")).toThrow();
+        });
+
+        const username: string = "axtck";
         it("should succeed", async () => {
-            await genSvg(baseParameters);
+            await genSvg(username);
         });
     });
 });

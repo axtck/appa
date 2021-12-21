@@ -43,12 +43,21 @@ export const getParameters = (username: string): IUsernameParameters => {
     return parameters;
 };
 
-export const genSvg = async (parameters: IUsernameParameters): Promise<void> => {
-    const rootDir: string = path.resolve("./");
+const calculateValues = (username: string): string => {
+    const parameters: IUsernameParameters = getParameters(username);
+    const svgData: string = `${parameters.firstCharacter}`;
+
+    return svgData;
+};
+
+export const genSvg = async (username: string): Promise<void> => {
+    const parameters: IUsernameParameters = getParameters(username);
+
+    const rootDir: string = path.join(path.resolve(__dirname), ".."); // root 
     const fileLoc: string = path.join(rootDir, "examples", "generated", `${parameters.username}.svg`);
 
     try {
-        const data = `<svg>${parameters.username}</svg>`;
+        const data = `<svg>${calculateValues(parameters.username)}</svg>`;
         await fs.writeFile(fileLoc, data);
     } catch (e) {
         console.error("generating svg failed", e);
